@@ -12,6 +12,7 @@ func BubbleSort(values []int) (sortedArray []int, err error) {
 	sortedArray = make([]int, len(values))
 	if copy(sortedArray, values) != len(values) {
 		err = errors.New("failed to copy all values")
+		return
 	}
 
 	for hasSwapped := true; hasSwapped; {
