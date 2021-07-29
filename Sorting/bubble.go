@@ -1,6 +1,6 @@
 package sorting
 
-import "errors"
+import "fmt"
 
 // alogirthm taken from https://en.wikipedia.org/wiki/Bubble_sort#Analysis
 // best case: O(n) - when already sorted
@@ -9,9 +9,9 @@ import "errors"
 
 // BubbleSort - returns a sorted copy of values using the bubble sort algorithm
 func BubbleSort(values []int) (sortedArray []int, err error) {
-	sortedArray = make([]int, len(values))
-	if copy(sortedArray, values) != len(values) {
-		err = errors.New("failed to copy all values")
+	sortedArray, err = copyArray(values)
+	if err != nil {
+		err = fmt.Errorf("failed to copy array: %w", err)
 		return
 	}
 
