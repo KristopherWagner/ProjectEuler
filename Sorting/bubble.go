@@ -2,7 +2,7 @@ package sorting
 
 import "fmt"
 
-// alogirthm taken from https://en.wikipedia.org/wiki/Bubble_sort#Analysis
+// algorithm taken from https://en.wikipedia.org/wiki/Bubble_sort#Analysis
 // best case: O(n) - when already sorted
 // worse case: O(n^2) - when it's reversed
 // average: O(n^2)
