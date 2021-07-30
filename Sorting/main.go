@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+const testArraySize int = 500
+
 func generatePresortedArray(size int) (array []int) {
 	array = make([]int, size)
 	for i := 0; i < size; i++ {
@@ -46,7 +48,7 @@ func checkTestingResults(t *testing.T, results []int, err error) {
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
-	if !sort.IntsAreSorted(results) {
+	if len(results) != testArraySize || !sort.IntsAreSorted(results) {
 		fmt.Printf(" - Failure\n")
 		t.Error("failed to sort array")
 	} else {

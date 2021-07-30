@@ -13,14 +13,14 @@ func TestMergeSort(t *testing.T) {
 
 func handlePresortedArrayMerge(t *testing.T) {
 	fmt.Printf("Testing merge sort with a presorted array")
-	psA := generatePresortedArray(500)
+	psA := generatePresortedArray(testArraySize)
 	results, err := MergeSort(psA)
 	checkTestingResults(t, results, err)
 }
 
 func handleReversedArrayMerge(t *testing.T) {
 	fmt.Printf("Testing merge sort with a reversed array")
-	revA := generateReversedArray(500)
+	revA := generateReversedArray(testArraySize)
 	results, err := MergeSort(revA)
 	checkTestingResults(t, results, err)
 }
@@ -29,7 +29,7 @@ func handleRandomArrayMerge(t *testing.T) {
 	var err error
 	for i := 0; i < 5 && err == nil; i++ {
 		fmt.Printf("Testing merge sort with a random array\t")
-		randA := generateRandomArray(500)
+		randA := generateRandomArray(testArraySize)
 		var results []int
 		results, err = MergeSort(randA)
 		checkTestingResults(t, results, err)
