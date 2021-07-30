@@ -3,6 +3,8 @@ package sorting
 import (
 	"fmt"
 	"math/rand"
+	"sort"
+	"testing"
 	"time"
 )
 
@@ -38,4 +40,16 @@ func copyArray(toCopy []int) (theCopy []int, err error) {
 		err = fmt.Errorf("copied only %d of %d numbers", numCopied, len(toCopy))
 	}
 	return
+}
+
+func checkTestingResults(t *testing.T, results []int, err error) {
+	if err != nil {
+		t.Fatalf(err.Error())
+	}
+	if !sort.IntsAreSorted(results) {
+		fmt.Printf(" - Failure\n")
+		t.Error("failed to sort array")
+	} else {
+		fmt.Printf("\t- Success\n")
+	}
 }
