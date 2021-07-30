@@ -1,5 +1,11 @@
 package sorting
 
+// alogirthm taken from https://www.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/overview-of-quicksort
+// best case: O(n log n)
+// worst case: O(n^2) (when the partitions are n - 1 in length)
+// 	which occurs when the array is reversed in my version of the algoritm
+// average: O(n log n)
+
 func recursiveQuick(values []int) (sortedArray []int) {
 	if len(values) <= 1 {
 		sortedArray = values
