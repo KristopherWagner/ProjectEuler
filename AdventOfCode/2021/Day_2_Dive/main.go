@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"strconv"
 	"strings"
+
+	"AdventOfCode/helpers"
 )
 
 type Position struct {
@@ -31,13 +32,10 @@ func (pos *Position) handleCommand(command string) {
 }
 
 func getInput() (input []string) {
-	data, err := os.ReadFile("input.txt")
+	input, err := helpers.ParseInputFile("input.txt")
 	if err != nil {
-		fmt.Println(err.Error())
-		return
+		fmt.Println("Failed to get input: " + err.Error())
 	}
-
-	input = strings.Split(string(data), "\n")
 	return
 }
 

@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"strconv"
-	"strings"
+
+	"AdventOfCode/helpers"
 )
 
 func getInput() (input []string) {
-	data, _ := os.ReadFile("input.txt")
-	input = strings.Split(string(data), "\n")
+	input, _ = helpers.ParseInputFile("input.txt")
 	return
 }
 
