@@ -3,6 +3,7 @@ package helpers
 import (
 	"fmt"
 	"os"
+	"sort"
 	"strings"
 )
 
@@ -14,5 +15,12 @@ func ParseInputFile(filename string) (input []string, err error) {
 	}
 
 	input = strings.Split(string(data), "\n")
+	return
+}
+
+func SortString(unsorted string) (sorted string) {
+	s := strings.Split(unsorted, "")
+	sort.Strings(s)
+	sorted = strings.Join(s, "")
 	return
 }
