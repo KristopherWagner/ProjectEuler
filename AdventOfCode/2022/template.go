@@ -27,7 +27,8 @@ func main() {
 	}
 	input, err := helpers.ParseInputFile("input.txt")
 	if err != nil {
-		fmt.Println("Unable to ")
+		fmt.Println("Unable to open input file: " + err.Error())
+		return
 	}
 
 	part1TestAnswer := 0
