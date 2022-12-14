@@ -26,11 +26,13 @@ func main() {
 		return
 	}
 
-	part1TestAnswer := 0
-	fmt.Println(partOne(test) == int64(part1TestAnswer))
+	part1TestAnswer := int64(0)
+	result := partOne(test)
+	fmt.Printf("%d -> %t\n", result, result == part1TestAnswer)
 	fmt.Printf("Part 1: %d\n", partOne(input))
 
-	part2TestAnswer := 0
-	fmt.Println(partTwo(test) == int64(part2TestAnswer))
+	part2TestAnswer := int64(0)
+	result = partTwo(test)
+	fmt.Printf("%d -> %t\n", result, result == part2TestAnswer)
 	fmt.Printf("Part 2: %d\n", partTwo(input))
 }
