@@ -6,11 +6,6 @@ import (
 	"AdventOfCode/helpers"
 )
 
-func getInput() (input []string) {
-	input, _ = helpers.ParseInputFile("input.txt")
-	return
-}
-
 func partOne(data []string) (answer int64) {
 	return
 }
@@ -33,9 +28,9 @@ func main() {
 
 	part1TestAnswer := 0
 	fmt.Println(partOne(test) == int64(part1TestAnswer))
-	fmt.Printf("Part 1: %d", partOne(input))
+	fmt.Printf("Part 1: %d\n", partOne(input))
 
 	part2TestAnswer := 0
 	fmt.Println(partTwo(test) == int64(part2TestAnswer))
-	fmt.Printf("Part 2: %d", partTwo(input))
+	fmt.Printf("Part 2: %d\n", partTwo(input))
 }
