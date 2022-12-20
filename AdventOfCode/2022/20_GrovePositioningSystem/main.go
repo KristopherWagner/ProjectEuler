@@ -56,18 +56,20 @@ func swapNodes(a, b *Node) {
 	last.prev = a
 }
 
-func moveNode(arr []*Node, index int) {
+func moveNode(arr []*Node, index int, key int64) {
 	current := arr[index]
-	if current.value == 0 {
+	moves := (current.value * key) % int64(len(arr)-1)
+
+	if moves == 0 {
 		return
 	}
 
-	if current.value > 0 {
-		for i := 0; i < int(current.value); i++ {
+	if moves > 0 {
+		for i := 0; i < int(moves); i++ {
 			swapNodes(current, current.next)
 		}
-	} else if current.value < 0 {
-		for i := current.value; i < 0; i++ {
+	} else if moves < 0 {
+		for i := moves; i < 0; i++ {
 			swapNodes(current.prev, current)
 		}
 	}
@@ -83,15 +85,17 @@ func findValue(start *Node, offset int) (value int64) {
 	return
 }
 
-func partOne(data []string) (answer int64) {
+func partOne(data []string, key int64, times int) (answer int64) {
 	arr, err := parseData(data)
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 
-	for i := 0; i < len(arr); i++ {
-		moveNode(arr, i)
+	for t := 0; t < times; t++ {
+		for i := 0; i < len(arr); i++ {
+			moveNode(arr, i, key)
+		}
 	}
 
 	zeroNode := &Node{}
@@ -109,13 +113,9 @@ func partOne(data []string) (answer int64) {
 	}
 
 	for i := 1000; i <= 3000; i += 1000 {
-		answer += findValue(zeroNode, i%len(arr))
+		answer += key * findValue(zeroNode, i%len(arr))
 	}
 
-	return
-}
-
-func partTwo(data []string) (answer int64) {
 	return
 }
 
@@ -131,13 +131,12 @@ func main() {
 		return
 	}
 
-	part1TestAnswer := int64(3)
-	result := partOne(test)
-	fmt.Printf("%d -> %t\n", result, result == part1TestAnswer)
-	fmt.Printf("Part 1: %d\n", partOne(input))
+	result := partOne(test, 1, 1)
+	fmt.Printf("%d -> %t\n", result, result == 3)
+	result = partOne(input, 1, 1)
+	fmt.Printf("%d -> %t\n", result, result == 7584)
 
-	part2TestAnswer := int64(-1)
-	result = partTwo(test)
-	fmt.Printf("%d -> %t\n", result, result == part2TestAnswer)
-	fmt.Printf("Part 2: %d\n", partTwo(input))
+	result = partOne(test, 811589153, 10)
+	fmt.Printf("%d -> %t\n", result, result == 1623178306)
+	fmt.Printf("Part 2: %d\n", partOne(input, 811589153, 10))
 }
